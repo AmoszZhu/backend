@@ -8,7 +8,6 @@ config file
 # base config
 class BaseConfig:
     SECRET_KEY = '\xbf\xb0\x11\xb1\xcd\xf9\xba\x8bp\x0c...'
-    PORT = 59003
 
 
 # dev config

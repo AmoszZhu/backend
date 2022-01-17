@@ -16,7 +16,7 @@ def create_app():
     :return:
     """
     app = Flask(__name__)
-    config_name = os.environ.get('APP_CONFIG')
+    config_name = os.environ.get('APP_CONFIG', "apps.config.TestConfig")
     app.config.from_object(config_name)
 
     # use db init app
