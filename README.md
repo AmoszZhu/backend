@@ -1,5 +1,4 @@
-# backend
+### 三台服务器 beacon01.com beacon02.com beacon03.com
 
-## 环境搭建
+### centos7 安装docker-compose
 
-1. 三台服务器 beacon01.com beacon02.com beacon03.com
