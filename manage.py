@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from apps import create_app, db
 from flask import jsonify
-from flask_migrate import Migrate
 import os
-
-# create app
-app = create_app()
-
-migrate = Migrate(app, db)
+from apps import app
 
 
 @app.route('/')

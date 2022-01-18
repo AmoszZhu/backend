@@ -6,6 +6,7 @@ init app
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from flask_migrate import Migrate
 import os
 
 db = SQLAlchemy()
@@ -26,3 +27,10 @@ def create_app():
     CORS(app)
 
     return app
+
+
+# create app
+app = create_app()
+migrate = Migrate(app, db)
+
+from apps import views
