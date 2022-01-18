@@ -1,0 +1,5 @@
+1. 数据库迁移
+    flask db init
+    flask db migrate
+    flask db upgrade
+2.
