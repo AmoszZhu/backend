@@ -9,6 +9,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restplus import Api
 import os
+from apps.user_api_v1 import user_bp
 
 db = SQLAlchemy()
 
@@ -40,4 +41,6 @@ migrate = Migrate(app, db)
 api = Api(app, version='1.0', title='User Api',
           description="The api of user")
 
-from apps import views
+from apps.user_api_v1.views import user_ns
+api.add_namespace(user_ns)
+
