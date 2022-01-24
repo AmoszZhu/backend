@@ -18,5 +18,10 @@ class DevConfig(BaseConfig):
 # test config
 class TestConfig(BaseConfig):
     DEBUG = True
+
+    # mysql
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:zj122900@beacon01.com:3306/beacon?charset=utf8'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    # jwt
+    JWT_SECRET = "beacon_project"
