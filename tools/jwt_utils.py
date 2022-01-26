@@ -6,9 +6,8 @@
     a. header 头部
 """
 
-# from flask import current_app
+from flask import current_app
 import jwt
-
 
 def generate_jwt(payload, expire, sercet=None):
     """
@@ -23,11 +22,26 @@ def generate_jwt(payload, expire, sercet=None):
     }
     _payload.update(payload)
 
-    # if not sercet:
-    #     secret = current_app.config['JWT_SECRET']
+    if not sercet:
+        sercet = current_app.config['JWT_SECRET']
 
-    token = jwt.jwk_from_dict(_payload, sercet, algorithms='HS256')
-    print(token)
+    token = jwt.encode(payload=_payload, key=sercet, algorithm='HS256')
+    return token
 
 
-generate_jwt({"name": "zhu jian"}, expire=300)
+def verify_token(token, sercet=None):
+    """
+
+    :param token:
+    :param sercet:
+    :return:
+    """
+    if not sercet:
+        sercet = current_app.config['JWT_SECRET']
+
+    try:
+        _payload = jwt.decode(token, sercet, algorithm='HS256')
+    except jwt.PyJWTError:
+        _payload = None
+
+    return _payload

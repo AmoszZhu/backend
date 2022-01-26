@@ -5,6 +5,7 @@ from flask import request, jsonify
 from apps.user_api_v1.models import User
 from apps import db
 from apps.user_api_v1.user_params import *
+from tools.token_utils import generate_token
 
 # 定义 user namespace for swagger
 user_ns = Namespace('user_api_v1', description='Api of user')
@@ -172,4 +173,12 @@ class UserLogin(Resource):
                        "msg": "Password is wrong, please try again"
                    }, 400
 
-        print(user)
+        token, refresh_token = generate_token(user.id)
+        return {
+            "data":{
+                "token": token,
+                "refresh_token": refresh_token
+            },
+            "response": "success",
+            "msg": "0"
+        }

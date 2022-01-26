@@ -25,3 +25,5 @@ class TestConfig(BaseConfig):
 
     # jwt
     JWT_SECRET = "beacon_project"
+
+    JWT_TIMEOUT = 2
