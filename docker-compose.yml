@@ -4,7 +4,6 @@ services:
   beacon-server:
     build: ./
     restart: always
-    command: python manage.py
     volumes:
       - ../backend:/backend
     ports:
@@ -14,3 +13,4 @@ services:
       - APP_HOST=0.0.0.0
       - APP_CONFIG=apps.config.TestConfig
       - FLASK_APP=manage.py
+    command: python manage.py
