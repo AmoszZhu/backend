@@ -13,7 +13,7 @@ def generate_token(user_id, refresh=True):
     :param refresh:
     :return:
     """
-    jwt_timeout = current_app.config("JWT_TIMEOUT")
+    jwt_timeout = current_app.config["JWT_TIMEOUT"]
     if not jwt_timeout:
         jwt_timeout = 2
     expire = datetime.utcnow() + timedelta(hours=jwt_timeout)

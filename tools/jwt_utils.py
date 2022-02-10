@@ -9,6 +9,7 @@
 from flask import current_app
 import jwt
 
+
 def generate_jwt(payload, expire, sercet=None):
     """
 

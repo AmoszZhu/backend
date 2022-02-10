@@ -12,7 +12,7 @@ user_ns = Namespace('user_api_v1', description='Api of user')
 
 
 @user_ns.route('/register')
-class UserApi(Resource):
+class RegisterApi(Resource):
     create_user_param = user_ns.model('create_user_param', create_user_param)
     create_user_data = user_ns.model('create_user_data', create_user_data)
     create_user_success = user_ns.model('create_user_success', {
@@ -108,7 +108,7 @@ class UserLogin(Resource):
 
     # response
     user_token = user_ns.model('user_token', user_token)
-    user_login_success = user_ns.model('user_login_success',{
+    user_login_success = user_ns.model('user_login_success', {
         "data": fields.Nested(user_token),
         "response": fields.String(description="Result status of the request"),
         "msg": fields.String("error msg")
@@ -175,10 +175,13 @@ class UserLogin(Resource):
 
         token, refresh_token = generate_token(user.id)
         return {
-            "data":{
+            "data": {
                 "token": token,
                 "refresh_token": refresh_token
             },
             "response": "success",
             "msg": "0"
         }
+
+
+
